@@ -1,11 +1,52 @@
 variable "vpc_id" {
+  type        = string
+  description = "VPC ID"
 }
 
-variable "ssh_key_name" {
+variable "region" {
+  type        = string
+  description = "AWS region"
+}
+
+variable "namespace" {
+  type        = string
+  description = "Namespace, which could be your organization name, e.g. 'eg' or 'cp'"
+  default     = ""
+}
+
+variable "stage" {
+  type        = string
+  description = "Stage, e.g. 'prod', 'staging', 'dev', or 'test'"
+  default     = ""
 }
 
 variable "name" {
-  default = "main"
+  type        = string
+  description = "Solution cluster name, e.g. 'main'"
+}
+
+variable "delimiter" {
+  type        = string
+  default     = "-"
+  description = "Delimiter to be used between `name`, `namespace`, `stage`, etc."
+}
+
+variable "attributes" {
+  type        = list(string)
+  default     = []
+  description = "Additional attributes (e.g. `1`)"
+}
+
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags (e.g. `map('BusinessUnit`,`XYZ`)"
+}
+
+variable "description" {
+  type        = string
+  default     = ""
+  description = "Elastic Beanstalk Application description"
 }
 
 variable "min_size" {
@@ -23,8 +64,13 @@ variable "max_size" {
   default     = 2
 }
 
-variable "subnet_ids" {
+variable "ec2_subnet_ids" {
   description = "Subnets for RabbitMQ nodes"
+  type        = list(string)
+}
+
+variable "elb_subnet_ids" {
+  description = "Subnets for ELB"
   type        = list(string)
 }
 
@@ -39,18 +85,37 @@ variable "elb_additional_security_group_ids" {
 }
 
 variable "instance_type" {
-  default = "m5.large"
+  default = "t3.medium"
 }
 
 variable "instance_volume_type" {
-  default = "standard"
+  default = "gp2"
 }
 
 variable "instance_volume_size" {
-  default = "0"
+  default = "8"
 }
 
 variable "instance_volume_iops" {
   default = "0"
 }
 
+variable "fallback_ondemand_instance_type" {
+  default     = "t2.medium"
+  description = "The fallback instance type if desired is not available"
+}
+
+variable "ondemand_base_capacity" {
+  default     = 1
+  description = "Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances"
+}
+
+variable "ondemand_instance_type" {
+  default     = "t2.medium"
+  description = "The desired on-demand instance type"
+}
+
+variable "ondemand_percentage_above_base_capacity" {
+  default     = 100
+  description = "Percentage split between on-demand and Spot instances above the base on-demand capacity"
+}
