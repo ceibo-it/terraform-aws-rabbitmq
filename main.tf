@@ -57,7 +57,7 @@ resource "aws_iam_instance_profile" "profile" {
   role        = aws_iam_role.role.name
 }
 
-resource "aws_launch_template" "mixed" {
+resource "aws_launch_template" "rabbit" {
 
   lifecycle {
     create_before_destroy = true
@@ -85,7 +85,7 @@ resource "aws_launch_template" "mixed" {
   user_data              = data.template_file.cloud-init.rendered
 
   tags = {
-    Name = local.cluster_name
+    Name = "rabbitmq ${local.cluster_name} nodes"
   }
 
   tag_specifications {
@@ -128,7 +128,7 @@ resource "aws_autoscaling_group" "rabbitmq" {
 
     launch_template {
       launch_template_specification {
-        launch_template_name = var.launch_template_name
+        launch_template_name = aws_launch_template.rabbit.name
         version              = "$Latest"
       }
 
