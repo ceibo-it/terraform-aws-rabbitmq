@@ -74,14 +74,14 @@ variable "elb_subnet_ids" {
   type        = list(string)
 }
 
-variable "nodes_additional_security_group_ids" {
+variable "nodes_security_group_ids" {
   type    = list(string)
-  default = []
+  default = null
 }
 
-variable "elb_additional_security_group_ids" {
+variable "elb_security_group_ids" {
   type    = list(string)
-  default = []
+  default = null
 }
 
 variable "instance_type" {

@@ -57,23 +57,6 @@ resource "aws_iam_instance_profile" "profile" {
   role        = aws_iam_role.role.name
 }
 
-resource "aws_security_group" "rabbitmq_elb" {
-  name        = "rabbitmq_elb-${var.name}"
-  vpc_id      = var.vpc_id
-  description = "Security Group for the rabbitmq elb"
-
-  egress {
-    protocol    = "-1"
-    from_port   = 0
-    to_port     = 0
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "rabbitmq ${var.name} ELB"
-  }
-}
-
 resource "aws_launch_template" "mixed" {
 
   lifecycle {
@@ -194,7 +177,7 @@ resource "aws_elb" "elb" {
   subnets         = var.elb_subnet_ids
   idle_timeout    = 3600
   internal        = true
-  security_groups = concat([aws_security_group.rabbitmq_elb.id], var.elb_additional_security_group_ids)
+  security_groups = var.elb_security_group_ids
 
   tags = {
     Name = local.cluster_name

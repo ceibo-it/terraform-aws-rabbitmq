@@ -24,7 +24,7 @@ data "template_file" "cloud-init" {
   vars = {
     sync_node_count = var.desired_size
     asg_name        = local.cluster_name
-    region          = data.aws_region.current.name
+    region          = var.region
     admin_password  = random_string.admin_password.result
     rabbit_password = random_string.rabbit_password.result
     secret_cookie   = random_string.secret_cookie.result
