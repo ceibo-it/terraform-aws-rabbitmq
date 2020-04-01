@@ -85,7 +85,7 @@ variable "elb_security_group_ids" {
 }
 
 variable "instance_type" {
-  default = "t3.medium"
+  default = "t3.small"
 }
 
 variable "instance_volume_type" {
@@ -101,7 +101,7 @@ variable "instance_volume_iops" {
 }
 
 variable "fallback_ondemand_instance_type" {
-  default     = "t2.medium"
+  default     = "t2.small"
   description = "The fallback instance type if desired is not available"
 }
 
@@ -111,7 +111,7 @@ variable "ondemand_base_capacity" {
 }
 
 variable "ondemand_instance_type" {
-  default     = "t2.medium"
+  default     = "t3.small"
   description = "The desired on-demand instance type"
 }
 
