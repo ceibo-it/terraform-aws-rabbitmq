@@ -150,7 +150,7 @@ resource "aws_autoscaling_group" "rabbitmq" {
 }
 
 resource "aws_elb" "elb" {
-  name = "${local.cluster_name}"
+  name = local.cluster_name
 
   listener {
     instance_port     = 5672
