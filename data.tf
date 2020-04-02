@@ -3,7 +3,7 @@ data "aws_ami_ids" "ami" {
 
   filter {
     name   = "name"
-    values = ["amzn-ami-hvm-2017*-gp2"]
+    values = ["amzn-ami-hvm-2018*-gp2"]
   }
 }
 
