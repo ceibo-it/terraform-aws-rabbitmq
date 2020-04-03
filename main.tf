@@ -115,6 +115,7 @@ resource "aws_autoscaling_group" "rabbitmq" {
   desired_capacity          = var.desired_size
   max_size                  = var.max_size
   health_check_grace_period = 300
+  enabled_metrics           = ["GroupInServiceInstances"]
   health_check_type         = "ELB"
   force_delete              = true
   load_balancers            = [aws_elb.elb.name]
