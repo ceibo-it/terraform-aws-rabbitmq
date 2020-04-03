@@ -82,7 +82,7 @@ resource "aws_launch_template" "rabbit" {
 
   name                   = local.cluster_name
   vpc_security_group_ids = var.nodes_security_group_ids
-  user_data              = "${base64encode(data.template_file.cloud-init.rendered)}"
+  user_data              = base64encode(data.template_file.cloud-init.rendered)
 
   tags = {
     Name = "rabbitmq ${local.cluster_name} nodes"
