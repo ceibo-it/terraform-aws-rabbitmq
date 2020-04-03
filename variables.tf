@@ -93,7 +93,7 @@ variable "instance_volume_type" {
 }
 
 variable "instance_volume_size" {
-  default = "8"
+  default = "0"
 }
 
 variable "instance_volume_iops" {
