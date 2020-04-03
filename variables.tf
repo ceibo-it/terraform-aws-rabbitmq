@@ -106,7 +106,7 @@ variable "fallback_ondemand_instance_type" {
 }
 
 variable "ondemand_base_capacity" {
-  default     = 0
+  default     = 2
   description = "Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances"
 }
 
@@ -116,7 +116,7 @@ variable "ondemand_instance_type" {
 }
 
 variable "ondemand_percentage_above_base_capacity" {
-  default     = 0
+  default     = 100
   description = "Percentage split between on-demand and Spot instances above the base on-demand capacity"
 }
 
