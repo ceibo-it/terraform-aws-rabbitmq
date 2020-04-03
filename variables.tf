@@ -119,3 +119,7 @@ variable "ondemand_percentage_above_base_capacity" {
   default     = 0
   description = "Percentage split between on-demand and Spot instances above the base on-demand capacity"
 }
+
+variable "ssh_key_name" {
+  default = null
+}

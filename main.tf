@@ -81,6 +81,8 @@ resource "aws_launch_template" "rabbit" {
   instance_type = var.ondemand_instance_type
 
   name                   = local.cluster_name
+  key_name               = var.ssh_key_name
+
   vpc_security_group_ids = var.nodes_security_group_ids
   user_data              = base64encode(data.template_file.cloud-init.rendered)
 
