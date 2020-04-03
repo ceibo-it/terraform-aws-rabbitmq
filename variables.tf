@@ -88,15 +88,15 @@ variable "instance_type" {
   default = "t3.small"
 }
 
-variable "instance_volume_type" {
+variable "root_volume_type" {
   default = "gp2"
 }
 
-variable "instance_volume_size" {
-  default = "0"
+variable "root_volume_size" {
+  default = "8"
 }
 
-variable "instance_volume_iops" {
+variable "root_volume_iops" {
   default = "0"
 }
 

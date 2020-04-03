@@ -64,12 +64,12 @@ resource "aws_launch_template" "rabbit" {
   }
 
   block_device_mappings {
-    device_name = "/dev/sda1"
+    device_name = "/dev/xvda"
 
     ebs {
-      volume_size = var.instance_volume_size
-      volume_type = var.instance_volume_type
-      iops        = var.instance_volume_iops
+      volume_size = var.root_volume_size
+      volume_type = var.root_volume_type
+      iops        = var.root_volume_iops
     }
   }
 
