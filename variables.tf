@@ -88,6 +88,11 @@ variable "instance_type" {
   default = "t3.small"
 }
 
+variable "replica_count" {
+  description = "Number of queue replicas (master plus mirrors) in the cluster. See https://www.rabbitmq.com/ha.html#replication-factor"
+  default     = 3
+}
+
 variable "root_volume_type" {
   default = "gp2"
 }

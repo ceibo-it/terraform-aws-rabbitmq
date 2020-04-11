@@ -22,7 +22,7 @@ data "template_file" "cloud-init" {
   template = file("${path.module}/cloud-init.yaml")
 
   vars = {
-    sync_node_count = var.desired_size
+    replica_count   = var.replica_count
     asg_name        = local.cluster_name
     region          = var.region
     admin_password  = random_string.admin_password.result
