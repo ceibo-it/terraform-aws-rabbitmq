@@ -128,3 +128,9 @@ variable "ondemand_percentage_above_base_capacity" {
 variable "ssh_key_name" {
   default = null
 }
+
+variable "dns_zone_id" {
+  type        = string
+  default     = ""
+  description = "Route53 parent zone ID. The module creates an alias record pointing to the ELB in this zone"
+}
