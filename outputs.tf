@@ -2,6 +2,10 @@ output "rabbitmq_elb_dns" {
   value = aws_elb.elb.dns_name
 }
 
+output "rabbitmq_dns_alias" {
+  value = module.dns_hostname.hostname
+}
+
 output "admin_password" {
   value     = random_string.admin_password.result
   sensitive = true

@@ -186,3 +186,14 @@ resource "aws_elb" "elb" {
     Name = local.cluster_name
   }
 }
+
+module "dns_hostname" {
+  source               = "git::https://github.com/ceibo-it/terraform-aws-route53-cluster-hostname.git?ref=tags/0.0.2"
+  enabled              = var.dns_zone_id != "" ? true : false
+  name                 = local.cluster_name
+  zone_id              = var.dns_zone_id
+  alias                = true
+  alias_name           = aws_elb.elb.dns_name
+  alias_target_zone_id = aws_elb.elb.zone_id
+  type                 = "A"
+}
