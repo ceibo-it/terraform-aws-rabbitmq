@@ -23,6 +23,7 @@ data "template_file" "cloud-init" {
 
   vars = {
     replica_count   = var.replica_count
+    ha_policy_name  = var.ha_policy_name
     asg_name        = local.cluster_name
     region          = var.region
     admin_password  = random_string.admin_password.result
