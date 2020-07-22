@@ -89,8 +89,13 @@ variable "instance_type" {
 }
 
 variable "replica_count" {
-  description = "Number of queue replicas (master plus mirrors) in the cluster. See https://www.rabbitmq.com/ha.html#replication-factor"
+  description = "Number of queue replicas (master plus mirrors) in the cluster. More than 3 is generally not recommended. See https://www.rabbitmq.com/ha.html#replication-factor"
   default     = 3
+}
+
+variable "ha_policy_name" {
+  description = "HA mode descriptive policy name. This will be visible in queues on RabbitMQ management UI. Usually: ha-[replica-number]"
+  default     = "ha-three"
 }
 
 variable "root_volume_type" {
