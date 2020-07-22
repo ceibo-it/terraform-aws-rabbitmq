@@ -62,6 +62,7 @@ write_files:
       docker exec rabbitmq rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
       docker exec rabbitmq rabbitmqctl set_permissions -p / rabbit ".*" ".*" ".*"
       docker exec rabbitmq rabbitmqctl delete_user guest
+      docker exec rabbitmq rabbitmq-plugins enable rabbitmq_shovel rabbitmq_shovel_management
 
 runcmd:
   - yum update -y
